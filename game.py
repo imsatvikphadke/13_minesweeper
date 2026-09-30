@@ -62,6 +62,7 @@ class Minesweeper:
             except ValueError:
                 print("Coordinates must be numbers.")
                 continue
+                 
             if not self.board.in_bounds(r, c):
                 print("Outside the board.")
                 continue
@@ -71,10 +72,13 @@ class Minesweeper:
                 continue
 
             if self.board.reveal((r, c)):
-                self.display(reveal_mines=True)
-                print("BOOM! You hit a mine.")
-                return
+               self.display(reveal_mines=True)
+               print("BOOM! You hit a mine.")
+               return
+          
+               print("Cell revealed.")
+          
             if self.board.won():
-                self.display()
-                print("You cleared the board!")
-                return
+                   self.display()
+                   print("You cleared the board!")
+                   return
