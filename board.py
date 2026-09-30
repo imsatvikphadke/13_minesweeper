@@ -66,4 +66,6 @@ class Board:
         return True
 
     def won(self):
-        return len(self.revealed) == self.rows * self.cols - self.mine_total
+    return all(pos in self.revealed for pos in self.mines.symmetric_difference(
+        {(r, c) for r in range(self.rows) for c in range(self.cols)}
+    ))
