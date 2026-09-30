@@ -1,9 +1,10 @@
 from board import Board
-
+from board import Board, DIFFICULTIES
 
 class Minesweeper:
-    def __init__(self):
-        self.board = Board()
+     def __init__(self, difficulty="easy"):
+        rows, cols, mines = DIFFICULTIES[difficulty]
+        self.board = Board(rows, cols, mines)
 
     def display(self, reveal_mines=False):
         b = self.board
@@ -27,6 +28,25 @@ class Minesweeper:
 
     def run(self):
         print("Minesweeper")
+        print("Select difficulty:")
+        print("1. Easy")
+        print("2. Medium")
+        print("3. Hard")
+        while True:
+            choice = input("> ").strip()
+            if choice == "1":
+                difficulty = "easy"
+                break
+            elif choice == "2":
+                difficulty = "medium"
+                break
+            elif choice == "3":
+                difficulty = "hard"
+                break
+            else:
+                print("Choose 1, 2, or 3.")
+        rows, cols, mines = DIFFICULTIES[difficulty]
+        self.board = Board(rows, cols, mines)
         print("Commands: r row col | f row col | q")
         while True:
             self.display()
