@@ -40,27 +40,27 @@ class Board:
         return sum(pos in self.mines for pos in self.neighbors(r, c))
 
     def reveal(self, start):
-    stack = [start]
-    hit_mine = False
-    while stack:
-        pos = stack.pop()
+        stack = [start]
+        hit_mine = False
+        while stack:
+            pos = stack.pop()
 
-        if pos in self.revealed or pos in self.flags:
-            continue
+            if pos in self.revealed or pos in self.flags:
+                continue
 
-        r, c = pos
-        self.revealed.add(pos)
+            r, c = pos
+            self.revealed.add(pos)
 
-        if pos in self.mines:
-            hit_mine = True
-            continue
+            if pos in self.mines:
+                hit_mine = True
+                continue
 
-        if self.adjacent_mines(r, c) == 0:
-            stack.extend(
-                n for n in self.neighbors(r, c)
-                if n not in self.revealed and n not in self.flags
-            )
-    return hit_mine
+            if self.adjacent_mines(r, c) == 0:
+                stack.extend(
+                    n for n in self.neighbors(r, c)
+                    if n not in self.revealed and n not in self.flags
+                )
+        return hit_mine
 
     def toggle_flag(self, pos):
         if pos in self.revealed:
@@ -72,6 +72,6 @@ class Board:
         return True
 
     def won(self):
-    return all(pos in self.revealed for pos in self.mines.symmetric_difference(
-        {(r, c) for r in range(self.rows) for c in range(self.cols)}
-    ))
+        return all(pos in self.revealed for pos in self.mines.symmetric_difference(
+            {(r, c) for r in range(self.rows) for c in range(self.cols)}
+        ))
