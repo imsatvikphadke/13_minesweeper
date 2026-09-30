@@ -76,7 +76,7 @@ class Minesweeper:
                print("BOOM! You hit a mine.")
                return
           
-               print("Cell revealed.")
+            print("Cell revealed.")
           
             if self.board.won():
                    self.display()
