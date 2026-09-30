@@ -6,7 +6,7 @@ class Minesweeper:
         rows, cols, mines = DIFFICULTIES[difficulty]
         self.board = Board(rows, cols, mines)
 
-    def display(self, reveal_mines=False):
+     def display(self, reveal_mines=False):
         b = self.board
         print("\n   " + " ".join(str(c + 1) for c in range(b.cols)))
         for r in range(b.rows):
