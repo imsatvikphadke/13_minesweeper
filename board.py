@@ -4,6 +4,12 @@ DEFAULT_ROWS = 6
 DEFAULT_COLS = 6
 DEFAULT_MINES = 6
 
+DIFFICULTIES = {
+    "easy": (6, 6, 6),
+    "medium": (9, 9, 12),
+    "hard": (12, 12, 30),
+}
+
 
 class Board:
     def __init__(self, rows=DEFAULT_ROWS, cols=DEFAULT_COLS, mines=DEFAULT_MINES):
